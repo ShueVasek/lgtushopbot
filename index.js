@@ -1,7 +1,6 @@
 const TelegramBot = require('node-telegram-bot-api');
 const express = require('express');
 const cors = require('cors');
-
 const token = '6396002388:AAFsEz-TX0PqALLi2YHr60glyTblLuMr18U';
 const webAppUrl = 'https://hilarious-llama-60b13e.netlify.app';
 
@@ -16,17 +15,18 @@ bot.on('message', async (msg) => {
     const text = msg.text;
 
     if(text === '/start') {
-        await bot.sendMessage(chatId, 'Ниже появится кнопка, заполни форму', {
+        await bot.sendMessage(chatId, 'Добро пожаловать в LGTUSHOP', {
             reply_markup: {
                 keyboard: [
-                    [{text: 'Заполнить форму', web_app: {url: webAppUrl + '/form'}}]
+                    [{text: 'Заполнить форму', web_app: {url: webAppUrl + '/form'}}],
+                    [{text: 'Сделать заказ', web_app: {url: webAppUrl}}]
                 ]
             }
         })
 
         await bot.sendMessage(chatId, 'Заходи в наш интернет магазин по кнопке ниже', {
             reply_markup: {
-                keyboard: [
+                inline_keyboard: [
                     [{text: 'Сделать заказ', web_app: {url: webAppUrl}}]
                 ]
             }
